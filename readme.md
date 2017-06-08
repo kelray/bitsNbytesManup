@@ -2,9 +2,8 @@ bitsNbytesManup:
 
 This is a collection of bitwise manipulation functions I developed myself for interfacing Analog-to-Digital Converters to microcontrollers and embedded devices. It can contactenate 2, 3 and 4 bytes together to form one integer number, be aware of your system/compiler support of the integer size (16 or 32 bits) otherwise ByteCat3() and ByteCat4() functions won't work properly. 
 
-Latest update (April, 2017): 
-- Functions SplitInt16() and SplitInt32() were added to the library, both can be used to split integer numbers into bytes (unsigned characters).
-- Changed type casting method used in v1.0 so it can compile easily with C compilers without errors (source code file is .c not .cpp anymore). 
+Latest changes (June, 2017):
+Optimized byte concatenation and integer splitting functions to eliminate any possible memory leaks and increase execution speed. 
  
 List of APIs:
 - unsigned int ByteCat2(unsigned char lowByte, unsigned char highByte);
@@ -35,11 +34,11 @@ Resets a specific bit of a number to 0.
 
 Returns the 2's complement of a number.
 
-- unsigned char* SplitInt16(int num);
+- void SplitInt16(int num, unsigned char *Buffer);
 
 Splits 16-bit integer number into two unsigned characters (two bytes).
 
-- unsigned char* SplitInt32(int num);
+- void SplitInt32(int num, unsigned char *Buffer);
 
 Splits 32-bit integer number into four unsigned characters (four bytes).
 
